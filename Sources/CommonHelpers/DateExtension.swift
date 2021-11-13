@@ -24,6 +24,10 @@ extension Date {
         let date = dateFormatter.date(from: string)!
         return date
     }
+    
+    func get(_ component: Calendar.Component) -> Int {
+        Calendar.current.component(component, from: self)
+    }
 
     var midnight: Date {
         let cal = Calendar(identifier: .gregorian)
