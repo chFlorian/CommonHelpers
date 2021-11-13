@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIApplication: UIGestureRecognizerDelegate {
-    func addTapGestureRecognizer() {
+    public func addTapGestureRecognizer() {
         guard let window = windows.first else { return }
         let tapGesture = UITapGestureRecognizer(target: window, action: #selector(endEditing))
         tapGesture.requiresExclusiveTouchType = false
@@ -21,11 +21,11 @@ extension UIApplication: UIGestureRecognizerDelegate {
         return true // set to `false` if you don't want to detect tap during other gestures
     }
     
-    @objc func endEditing() {
+    @objc public func endEditing() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
-    static var currentScene: UIWindowScene? {
+    public static var currentScene: UIWindowScene? {
         get {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                 return scene

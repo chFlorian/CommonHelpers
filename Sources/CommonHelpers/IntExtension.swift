@@ -8,7 +8,7 @@
 import Foundation
 
 extension Int {
-    var asTimeString: String {
+    public var asTimeString: String {
         let (hours, minutes, seconds) = (self / 3600, (self % 3600) / 60, (self % 3600) % 60)
         return "\(hours > 0 ? "\(hours)h " : "")\(minutes > 0 ? "\(minutes)m " : "")\(seconds)s"
     }

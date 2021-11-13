@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    init(hex: String) {
+    public init(hex: String) {
         var hexNormalized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         hexNormalized = hexNormalized.replacingOccurrences(of: "#", with: "")
 
@@ -36,7 +36,7 @@ extension Color {
         self.init(red: Double(r), green: Double(g), blue: Double(b))
     }
     
-    var toHex: String {
+    public var toHex: String {
         // Extract Components
         guard let components = cgColor?.components, components.count >= 3 else {
             fatalError("Incorrect components in Color.toHex")
@@ -58,7 +58,7 @@ extension Color {
         return hex
     }
     
-    var uiColor: UIColor {
+    public var uiColor: UIColor {
         UIColor(self)
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 extension Date {
-    func localString(dateStyle: DateFormatter.Style = .long,
+    public func localString(dateStyle: DateFormatter.Style = .long,
                      timeStyle: DateFormatter.Style = .none) -> String {
         return DateFormatter.localizedString(
           from: self,
@@ -16,7 +16,7 @@ extension Date {
           timeStyle: timeStyle)
     }
     
-    static func parse(_ string: String, format: String = "yyyy-MM-dd") -> Date {
+    public static func parse(_ string: String, format: String = "yyyy-MM-dd") -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = NSTimeZone.default
         dateFormatter.dateFormat = format
@@ -25,33 +25,33 @@ extension Date {
         return date
     }
     
-    func get(_ component: Calendar.Component) -> Int {
+    public func get(_ component: Calendar.Component) -> Int {
         Calendar.current.component(component, from: self)
     }
 
-    var midnight: Date {
+    public var midnight: Date {
         let cal = Calendar(identifier: .gregorian)
         return cal.startOfDay(for: self)
     }
     
-    var isToday: Bool {
+    public var isToday: Bool {
         self.midnight == Date().midnight
     }
     
-    var dayBefore: Date {
+    public var dayBefore: Date {
         Calendar.current.date(byAdding: .day, value: -1, to: midnight)!
     }
     
-    var dayAfter: Date {
+    public var dayAfter: Date {
         Calendar.current.date(byAdding: .day, value: 1, to: midnight)!
     }
     
-    var toDayInt: Int {
+    public var toDayInt: Int {
         let calendar = Calendar.current
         return calendar.component(.year, from: self) * 365 + calendar.component(.month, from: self) * 30 + calendar.component(.day, from: self)
     }
     
-    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+    public static func - (lhs: Date, rhs: Date) -> TimeInterval {
         return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
     }
 }
